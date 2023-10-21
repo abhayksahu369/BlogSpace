@@ -1,0 +1,349 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+
+}
+body{
+  background-image: url("components/images/bg.jpg");
+  background-size: contain;
+
+}
+
+
+
+/*****************************************************************/
+.nav{
+  width:100%;
+  height:60px;
+  background-color: rgb(8, 13, 62);
+  color:yellow;
+  display:flex;
+  justify-content:space-evenly;
+  align-items: center;
+  position:fixed;
+  top:0;
+  z-index: 2;
+  box-shadow: 0 1px 1px grey;
+
+
+}
+.nav a{
+  text-decoration: none;
+  color: yellow;
+}
+.nav h1{
+  font-size: 20px;
+ 
+  
+}
+
+.dp-createablog{
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  
+ box-shadow: 0 1px 1px grey;
+}
+.dp img{
+  
+  height:50px;
+  width:50px;
+  
+  margin-right:5px;
+}
+
+.createablog input{
+  width:80vw;
+  height:50px;
+ border :1px solid black;
+ box-shadow: 1px 1px 1px grey;
+  border-radius: 20px 20px 20px 20px;
+  margin-bottom: 20px;
+  background-color:rgb(8, 13, 62) ;
+  padding-left: 2px;
+  
+}
+.seatbelt{
+  padding: 10px;
+  padding-left: 5px;
+  color:yellow;
+  font-size: 12px;
+  box-shadow: 1px 1px 1px grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.seatbelt img{
+  height: 30px;
+}
+.fixedRocket{
+   
+    position: fixed;
+    top: 160px;
+    right: 5px; 
+    z-index: 999; 
+  
+  
+}
+.card{
+  position: relative;
+  height:300px;
+  width:100%;
+  box-shadow: 0 1px 1px white;
+}
+
+.cardTop{
+  display:flex;
+   justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  height:10%;
+}
+.cardTopLeft{
+  display:flex;
+   justify-content: space-between;
+  align-items: center;
+}
+.cardTopLeft a{
+  text-decoration:none;
+}
+.cardTop img{
+  height:35px;
+}
+.profilePhoto img{
+  height:30px;
+  width:30px;
+  
+  margin-right:5px;
+}
+.cardUsername{
+  color: aliceblue;
+}
+
+.cardBottom{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  color:yellow;
+  height:90%;
+  width:100%;
+  text-align: center;
+
+  
+
+}
+.cardBottom h1{
+  color:aliceblue;
+  text-transform: uppercase;
+  font-size: 30px;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+
+}
+
+.homeblogs{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  justify-content: center;
+}
+.end{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:300px;
+  width:100%;
+  color:yellow;
+  margin-bottom: 60px;
+  
+}
+.end img{
+  width:100px;
+}
+.postedAgo{
+  color:grey;
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  font-size: 13px;
+}
+.explore{
+  color:grey;
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  font-size: 13px;
+}
+
+.footer{
+  background-color: rgb(8, 13, 62);
+  width:100%;
+  height:70px;
+  box-shadow: 0 -1px 1px black;
+  position:fixed;
+  bottom:0;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  
+  border-radius: 10px 10px 0 0 ;
+}
+
+.footer img{
+ 
+  height: 40px;
+  width:40px;
+ 
+}
+.footer i{
+  color: yellow;
+  text-decoration: none;
+}
+.footer a{
+  
+  text-decoration: none;
+}
+
+
+.mygalaxy{
+  margin-top:60px;
+  color:yellow;
+  text-align: center;
+  font-size: 15px;
+  padding:6px;
+  box-shadow: 0 1px 1px grey;
+}
+.myprofiletop{
+  position: relative;
+  display: flex;
+ padding:6px;
+  align-items: center;
+  box-shadow: 0 1px 1px grey;
+}
+.myprofiletop img{
+  height:100px;
+}
+.myprofiletopright{
+  margin-left: 3px;
+  line-height: 17px;
+}
+.myprofiletop h4{
+  color:white;
+
+}
+.myprofiletop p{
+ color:grey;
+}
+.myprofiletop i{
+  color:yellow;
+  position: absolute;
+  top:10px;
+  right:10px;
+}
+
+.myprofilebottom{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  justify-content: center;
+}
+.myprofilecard{
+  width: 100%;
+  height:100%;
+  position: relative;
+}
+.myprofilecard i{
+  position: absolute;
+  color: yellow;
+  bottom:10px;
+  left:50%;
+  transform: translate(-50%,0);
+}
+
+
+.createblog{
+  margin-top: 60px;
+  color: yellow;
+  text-align: center;
+}
+.createblog h1{
+  font-size: 15px;
+  box-shadow: 1px 1px 2px grey;
+  padding:6px;
+
+
+}
+.heading{
+  height:10vh;
+  width:80vw;
+  resize: none;
+  background-color:rgb(8, 13, 62) ;
+  color:whitesmoke;
+  border: none;
+  padding:5px;
+  box-shadow: 1px 1px 2px grey;
+  margin:10px;
+}
+
+.blog{
+  padding:5px;
+  height:30vh;
+  width:80vw;
+  resize: none;
+  background-color:rgb(8, 13, 62) ;
+  color:whitesmoke;
+  border: none;
+  box-shadow: 1px 1px 2px grey;
+}
+.createblog button{
+  margin-top: 10px;
+  height:30px;
+  width:80px;
+  border: 1px solid black;
+  background-color: transparent;
+  background-color: yellow;
+  box-shadow: 1px 1px 2px grey;
+}
+
+.menu{
+  margin-top:60px ;
+  color:yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+  background-color:rgb(8, 13, 62)  ;
+}
+.menulist{
+  width:100%;
+  height:60px;
+  background-color:rgb(8, 13, 62) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+.menu a{
+  text-decoration: none;
+  color:yellow;
+  width:100%;
+  border-bottom: 1px solid yellow;
+  
+}
+.menu :last-child{
+  border-bottom: none;
+}
+
+.blogcontent{
+  padding-bottom: 80px;
+}

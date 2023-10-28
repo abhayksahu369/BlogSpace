@@ -11,7 +11,14 @@ const blogSchema=new mongoose.Schema({
     userid:{
         required:true,
         type:String
-    }
-},{timestamps:true})
+    },
+    planetno:{
+        type:Number,
+    },
+    createdat:{
+        type:String,
+    },
+
+})
 
 module.exports=mongoose.model("blogs",blogSchema)

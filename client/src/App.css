@@ -7,6 +7,7 @@
 body{
   background-image: url("components/images/bg.jpg");
   background-size: contain;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
 
 }
 
@@ -38,12 +39,10 @@ body{
   
 }
 
-.dp-createablog{
+/* .dp-createablog{
   margin-top: 80px;
   display: flex;
   justify-content: center;
-  
- box-shadow: 0 1px 1px grey;
 }
 .dp img{
   
@@ -63,26 +62,38 @@ body{
   background-color:rgb(8, 13, 62) ;
   padding-left: 2px;
   
+} */
+
+.homeblogsHeading{
+  margin-top: 70px;
+  color:aliceblue;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+  text-align: center;
 }
 .seatbelt{
+  font-family:'Space Mono',sans-serif;
   padding: 10px;
   padding-left: 5px;
   color:yellow;
   font-size: 12px;
-  box-shadow: 1px 1px 1px grey;
+  border-bottom: 1px solid grey;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+
 }
 .seatbelt img{
   height: 30px;
 }
+.seatbelt p{
+  width:400px;
+}
 .fixedRocket{
    
     position: fixed;
-    top: 160px;
-    right: 5px; 
+    top: 135px;
+    right: 4px; 
     z-index: 999; 
   
   
@@ -94,33 +105,6 @@ body{
   box-shadow: 0 1px 1px white;
 }
 
-.cardTop{
-  display:flex;
-   justify-content: space-between;
-  align-items: center;
-  padding: 2px;
-  height:10%;
-}
-.cardTopLeft{
-  display:flex;
-   justify-content: space-between;
-  align-items: center;
-}
-.cardTopLeft a{
-  text-decoration:none;
-}
-.cardTop img{
-  height:35px;
-}
-.profilePhoto img{
-  height:30px;
-  width:30px;
-  
-  margin-right:5px;
-}
-.cardUsername{
-  color: aliceblue;
-}
 
 .cardBottom{
   /* display: flex;
@@ -135,7 +119,9 @@ body{
 
 }
 .cardBottom h1{
+  word-wrap: break-word;
   color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
   text-transform: uppercase;
   font-size: 30px;
   position: absolute;
@@ -153,6 +139,7 @@ body{
   gap:10px;
   justify-content: center;
 }
+
 .end{
   display:flex;
   flex-direction: column;
@@ -211,21 +198,28 @@ body{
   text-decoration: none;
 }
 
-
+/**************************my profile and user profile***************************/
+.myprofileContainer{
+  width:100%;
+}
 .mygalaxy{
   margin-top:60px;
-  color:yellow;
   text-align: center;
-  font-size: 15px;
+  position: relative;
   padding:6px;
-  box-shadow: 0 1px 1px grey;
+  color:yellow;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+  
 }
 .myprofiletop{
+  width:100vw;
   position: relative;
   display: flex;
  padding:6px;
   align-items: center;
-  box-shadow: 0 1px 1px grey;
+  border-bottom: 1px solid aliceblue;
+  
+  
 }
 .myprofiletop img{
   height:100px;
@@ -234,12 +228,19 @@ body{
   margin-left: 3px;
   line-height: 17px;
 }
-.myprofiletop h4{
-  color:white;
+.myprofiletop h2{
+  color:aliceblue;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+  margin-bottom: 10px;
+  
 
 }
 .myprofiletop p{
- color:grey;
+ color:azure;
+ font-size: 13px;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  text-transform:capitalize;
+
 }
 .myprofiletop i{
   color:yellow;
@@ -255,6 +256,21 @@ body{
   gap:10px;
   justify-content: center;
 }
+.myprofilebottom h6{
+  color:yellow;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  font-size: 10px;
+  text-align: center;
+
+  
+}
+.myprofilebottom h6 a{
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  font-size: 10px;
+
+  
+}
 .myprofilecard{
   width: 100%;
   height:100%;
@@ -268,25 +284,30 @@ body{
   transform: translate(-50%,0);
 }
 
-
+/*************************CREATEBLOG**************************/
 .createblog{
   margin-top: 60px;
   color: yellow;
   text-align: center;
 }
 .createblog h1{
-  font-size: 15px;
-  box-shadow: 1px 1px 2px grey;
-  padding:6px;
-
-
+  color:aliceblue;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+    padding:6px;
+}
+.createblog p{
+  color:yellow;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  font-size: 11px;
+  margin:2px 0;
 }
 .heading{
   height:10vh;
   width:80vw;
   resize: none;
   background-color:rgb(8, 13, 62) ;
-  color:whitesmoke;
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
   border: none;
   padding:5px;
   box-shadow: 1px 1px 2px grey;
@@ -299,20 +320,30 @@ body{
   width:80vw;
   resize: none;
   background-color:rgb(8, 13, 62) ;
-  color:whitesmoke;
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  white-space:pre-wrap;
   border: none;
   box-shadow: 1px 1px 2px grey;
 }
-.createblog button{
-  margin-top: 10px;
-  height:30px;
-  width:80px;
-  border: 1px solid black;
-  background-color: transparent;
-  background-color: yellow;
-  box-shadow: 1px 1px 2px grey;
+.heading::placeholder{
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
 }
-
+.blog::placeholder{
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+}
+.createblog button{
+  background-color: yellow;
+  border:none;
+  height:30px;
+  width:100px;
+  margin:2px;
+  color:rgb(8, 13, 62);
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+}
+/*********************menu**********************/
 .menu{
   margin-top:60px ;
   color:yellow;
@@ -330,7 +361,8 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  border-bottom: 1px solid yellow;
+  cursor: pointer;
   
 }
 .menu a{
@@ -343,7 +375,206 @@ body{
 .menu :last-child{
   border-bottom: none;
 }
-
+/***********************blogpage and blogcard************************/
+.cardTop{
+  display:flex;
+   justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  height:10%;
+}
+.cardTopLeft{
+  display:flex;
+   justify-content: space-between;
+  align-items: center;
+}
+.cardTopLeft a{
+  text-decoration:none;
+}
+.cardTop img{
+  height:35px;
+}
+.profilePhoto img{
+  height:30px;
+  width:30px;
+  
+  margin-right:5px;
+}
+.cardUsername{
+  color:aliceblue;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+}
+.cardTopRight{
+  display:flex;
+  justify-content: space-between;
+ align-items: center;
+ gap:4px;
+}
 .blogcontent{
   padding-bottom: 80px;
+  font-family:'Space Mono',sans-serif;
+  text-align: center;
+  color:aliceblue;
+}
+.blogcontent h2{
+  word-wrap: break-word;
+  color:aliceblue;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+
+  margin:10px 0;
+    
+}
+.blogcontent p{
+  white-space: pre-wrap;
+}
+.blogcontentBottomHandle {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap:20px;
+}
+
+.blogcontentBottomHandle i{
+  color:yellow;
+}
+.blogcontentBottomText p{
+  color:yellow;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  font-size: 13px;
+  margin:20px 0;
+}
+.blogcontentBottomText a{
+ text-decoration: none;
+}
+
+
+/*************************register********************************/
+
+.registerContent{
+  color:aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.registerContent h1{
+  color:aliceblue;
+  margin:6px 0;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+}
+.registerContent p{
+  color:yellow;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  font-size: 13px;
+  margin:2px 0;
+}
+.registerContent p a{
+  color:aliceblue;
+  
+}
+
+.registerForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm input{
+  background-color: transparent;
+  border:none;
+  border-bottom: 2px solid aliceblue;
+  height:30px;
+  width:300px;
+  margin:2px;
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+
+  
+  
+}
+.registerForm input::placeholder{
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+  
+}
+.registerForm input:focus{
+  outline: none;
+  border-bottom: 3px solid yellow;
+}
+
+.registerForm button{
+  background-color: yellow;
+  border:none;
+  height:30px;
+  width:100px;
+  margin:2px;
+  color:rgb(8, 13, 62);
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+}
+/***********************edit user****************************/
+.editProfileContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.editProfileContent img{
+  height:100px;
+}
+.editProfileContent h1{
+  text-align: center;
+  color:aliceblue;
+  margin:6px 0;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+}
+.editProfileContent p{
+  color:yellow;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+
+}
+.editProfileForm {
+  width:300px;
+
+}
+
+.editProfileForm input{
+  background-color: transparent;
+  border:none;
+  border-bottom: 2px solid aliceblue;
+  height:30px;
+  width:300px;
+  margin:2px;
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+
+}
+.editProfileForm input:focus{
+  outline: none;
+  border-bottom: 3px solid yellow;
+}
+.editProfileContent button{
+  background-color: yellow;
+  border:none;
+  height:30px;
+  width:100px;
+  margin:2px;
+  color:rgb(8, 13, 62);
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+
+@media only screen and (max-width: 768px){
+  html,
+  body{
+  width:100%;
+  overflow-x:hidden;
+  }
 }

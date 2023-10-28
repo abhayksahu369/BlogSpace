@@ -51,8 +51,22 @@ const deleteBlog=async(req,res,next)=>{
 const getAllBlogs=async(req,res,next)=>{
     try {
         let blogs=await Blog.find()
-        console.log("all blogs are displayed")
-        res.status(200).json(blogs)
+        blogs=blogs.reverse()
+        const page=parseInt(req.query.page);
+        const size=parseInt(req.query.size);
+        const startindex=0;
+        let lastindex=page*size;
+        if(blogs.length<=lastindex){
+            lastindex=blogs.length;
+            let sliceblogs=blogs.slice(startindex,lastindex)
+            console.log(" last feed blogs are displayed")
+            res.status(200).json({ blog: sliceblogs, result: "lastpage" });
+
+        }else{
+            let sliceblogs=blogs.slice(startindex,lastindex)
+            console.log("feed blogs are displayed")
+            res.status(200).json(sliceblogs)
+        }
     } catch (error) {
         console.log("****************error in get all blogs****************")
         next(error)
@@ -63,7 +77,7 @@ const getUserBlogs=async(req,res,next)=>{
     try {
         let userblogs=await Blog.find({userid:req.params.id})
         console.log("all user blogs are displayed")
-        res.status(200).json(userblogs)
+         res.status(200).json(userblogs)
     } catch (error) {
         console.log("****************error in get user blogs****************")
         next(error)

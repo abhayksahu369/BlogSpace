@@ -5,14 +5,30 @@ import rocket from "../images/rocket.png"
 import endedPic from "../images/endedPic.png"
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Footer from "./Footer";
 
 const HomeBlogs = () => {
     const[blogs,setBlogs]=useState([])
+    const[laspage,setLastpage]=useState(false)
+    const[next,setNext]=useState(() => {
+        const storedNext = sessionStorage.getItem('next')
+        return storedNext? parseInt(storedNext):1;
+          
+      })
+    
+   
     useEffect(()=>{
+     sessionStorage.setItem('next', next);
       try {
         (async()=>{
-            const result=await axios.get("http://localhost:5000/api/blog/getallblogs")
-            setBlogs(result.data)
+            const result=await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getallblogs?page=${next}&size=3`)
+            if(result.data.result){
+              setLastpage(true)
+              setBlogs([...result.data.blog])
+            }else{
+                setBlogs([...result.data])
+            }
+            
             console.log(blogs)
 
         })()
@@ -22,12 +38,12 @@ const HomeBlogs = () => {
         alert("something went wrong,please try again later.")
         
       }
-    },[])
+    },[next])
 
     return (
         <>
             
-            <div className="dp-createablog">
+            {/* <div className="dp-createablog">
                 <div className="dp"><img src={astro} alt="dp"/></div>
                 
                 <Link to="/createblog">
@@ -36,9 +52,12 @@ const HomeBlogs = () => {
                     </div>
                 </Link>    
                 
+            </div> */}
+            <div className="homeblogsHeading">
+                <h1>Discover Blogs</h1>
             </div>
             <div className="seatbelt">
-                <p> Fasten your rocket seatbelt and prepare to explore<br/> CAPTAIN!!!</p>
+                <p>Explore interesting blogs by fellow astronauts.<br/> Click to dive into their thoughts.</p>
                 <img src={rocket} alt="rocket" className="fixedRocket"/>
            
             </div>
@@ -48,20 +67,32 @@ const HomeBlogs = () => {
                 blogs.length>0?(
                     blogs.map((items) =>
                         <Card items={items} />
-                    )):<h1>no blogs to display</h1>
+                    )):<h6 style={{color:"yellow"}}>no blogs to display</h6>
                 }
-
-            </div>
-            <div className="end">
+                {
+                laspage? (
+                    <div className="end">
                 <img src={endedPic} alt="img"></img>
                 <p>Exploration finished!</p>
 
+            </div>):
+            <> 
+            <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
+            <br/><br/><br/><br/><br/>
+            </>
+            
+             }
+              <Footer/>
+                
             </div>
+           
+                
+            
          
-
+          
 
         </>
     )
 }
 
-export default HomeBlogs;
+export default  HomeBlogs;

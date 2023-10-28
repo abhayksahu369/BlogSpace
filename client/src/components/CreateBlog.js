@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./homepage/Footer";
 
 
 
@@ -17,8 +18,11 @@ const CreateBlog=()=>{
 
     const handleCreateBlog=async()=>{
        try {
+
         if(!(heading&&blog))return alert("all fields are necessary.")
-        const result=await axios.post("http://localhost:5000/api/blog/createblog",{heading,blog,userid:id})
+        const planetno=Math.floor( Math.random()*21 + 1)
+        const createdat=new Date(Date.now());
+        const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/blog/createblog`,{heading,blog,userid:id,planetno,createdat})
          navigate("/")
        } catch (error) {
          console.log("error while creating blog")
@@ -27,16 +31,19 @@ const CreateBlog=()=>{
        }
     }
     return(
+      <>
         <div className="createblog">
-        <h1>CREATE A BLOG</h1>
-       
-        <textarea className="heading" placeholder="Write a short 7-8 word heading for your blog (to be shown in the feed)." value={heading}  onChange={(e)=>{setHeading(e.target.value)}}/><br/>
+        <h1>Launch Your Blog into Orbit</h1>
+        <p>Prepare for launch! Craft your blog post, share your wisdom, and let your thoughts orbit the minds of fellow astronauts. Your words can become celestial bodies in this cosmic library.</p>
+        <textarea className="heading" placeholder="Write a short 7-8 word heading for your blog (to be shown in the feed)." value={heading}  onChange={(e)=>{if(e.target.value.length<51)setHeading(e.target.value)}}/><br/>
         <textarea className="blog" placeholder="Share your thoughts, experiences, or stories here (short or long,any category)." value={blog} onChange={(e)=>{setBlog(e.target.value)}}/><br/>
-        <button onClick={handleCreateBlog}>GO</button>
-
+        <button onClick={handleCreateBlog}>LAUNCH</button>
+         <br/><br/><br/><br/><br/>
 
 
         </div>
+        <Footer/>
+        </>
         
     )
 }

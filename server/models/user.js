@@ -24,6 +24,10 @@ const userSchema=new mongoose.Schema({
     place:{
        type:String
     },
+    dpnumber:{
+        type:Number,
+        required:true
+    }
 },{timestamps:true})
 
 module.exports=mongoose.model("users",userSchema)

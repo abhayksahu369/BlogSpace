@@ -18,6 +18,9 @@ const signUp= async (req, res,next) => {
             username: req.body.username,
             email: req.body.email,
             password: hashPassword,
+            about:req.body.about,
+            place:req.body.place,
+            dpnumber:req.body.dpnumber,
         });
         newUser = await newUser.save();
         newUser.password = undefined;

@@ -1,10 +1,12 @@
 import axios from "axios"
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+
 
 
 
 const Register=()=>{
+    const auth=localStorage.getItem("id")
     const[name,setName]=useState("")
     const[username,setUsername]=useState("")
     const[email,setEmail]=useState("")
@@ -12,11 +14,28 @@ const Register=()=>{
     const[repassword,setRepassword]=useState("")
     const[about,setAbout]=useState("")
     const[place,setPlace]=useState("")
+    const navigate=useNavigate()
+
+    
+  useEffect(()=>{
+    if(auth){
+     navigate("/")
+    }
+   },[])
+    
     const handleRegister=async()=>{
+       
         try {
-            const result=await axios.post("http://localhost:5000/api/auth/signup",{name,username,email,password,about,place})
+            const dpnumber=Math.floor( Math.random()*19 + 1)
+            if(!(name&&username&&email&&password&&repassword&&about&&place))return alert("all fields are necessary.")
+            if(password!==repassword)return alert("password and Retype password are not matching.")
+            const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/signup`,{name,username,email,password,about,place,dpnumber})
+            localStorage.setItem("id", JSON.stringify({ id: result.data._id,name:result.data.name }))
+            console.log(result.data)
+            navigate("/")
             console.log("user registered")
             console.log(result.data)
+            navigate("/")
         } catch (error) {
             console.log("error in registering")
             console.log(error);
@@ -29,25 +48,26 @@ const Register=()=>{
     return(
         <>
         <br/><br/><br/>
-        <div style={{color:" #C0C0C0"}}>
-        <h2>Join Our Space Blogging Community</h2>
+        <div className="registerContent">
+        <h1>Join Our Space Blogging Community</h1>
         <p>Create an astronaut profile and explore a universe of ideas with us.</p>
-        <p>Full Name</p>
-        <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{setName(e.target.value)}} />
-        <p>Username</p>
-        <input type="text" placeholder="Username" value={username} onChange={(e)=>{setUsername(e.target.value)}} />
-        <p>Email</p>
+        <div className="registerForm">
+        <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 21)setName(e.target.value)}} />
+        
+        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 15)setUsername(e.target.value)}} />
+        
         <input type="text" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
-        <p>Password</p>
+        
         <input type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}} />
-        <p>Re-type Password</p>
+    
         <input type="password" placeholder="Re-type Password" value={repassword} onChange={(e)=>{setRepassword(e.target.value)}} />
-        <p>About</p>
-        <input type="text" placeholder="About" value={about} onChange={(e)=>{setAbout(e.target.value)}} />
-        <p>Place</p>
-        <input type="text" placeholder="Place" value={place} onChange={(e)=>{setPlace(e.target.value)}} /><br/>
+        
+        <input type="text" placeholder="About(up to 5 words)" value={about} onChange={(e)=>{if (e.target.value.length < 30)setAbout(e.target.value)}} />
+        
+        <input type="text" placeholder="Place" value={place} onChange={(e)=>{if (e.target.value.length < 21)setPlace(e.target.value)}} /><br/>
         <button onClick={handleRegister}>Register</button>
         <p>Already a user? Please <Link to="/login">log in.</Link></p>
+        </div>
         </div>
         
         </>

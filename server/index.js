@@ -22,7 +22,7 @@ const dbConnect=()=>{
 }
 
 app.use(cors({
-    origin:["http://localhost:3000"],
+    origin:["https://653d51f120505e64150322bd--wondrous-yeot-3e6136.netlify.app"],
     credentials:true,
 }))
 app.use(cookieParser())

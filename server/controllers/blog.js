@@ -76,6 +76,7 @@ const getAllBlogs=async(req,res,next)=>{
 const getUserBlogs=async(req,res,next)=>{
     try {
         let userblogs=await Blog.find({userid:req.params.id})
+        userblogs=userblogs.reverse()
         console.log("all user blogs are displayed")
          res.status(200).json(userblogs)
     } catch (error) {

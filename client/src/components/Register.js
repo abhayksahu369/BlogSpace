@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-
+import ClipLoader from "react-spinners/ClipLoader"
 
 
 
@@ -14,6 +14,7 @@ const Register=()=>{
     const[repassword,setRepassword]=useState("")
     const[about,setAbout]=useState("")
     const[place,setPlace]=useState("")
+    const[loading,setLoading]=useState(false)
     const navigate=useNavigate()
 
     
@@ -29,14 +30,15 @@ const Register=()=>{
             const dpnumber=Math.floor( Math.random()*19 + 1)
             if(!(name&&username&&email&&password&&repassword&&about&&place))return alert("all fields are necessary.")
             if(password!==repassword)return alert("password and Retype password are not matching.")
+            setLoading(true)
             const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/signup`,{name,username,email,password,about,place,dpnumber})
+            setLoading(false)
             localStorage.setItem("id", JSON.stringify({ id: result.data._id,name:result.data.name }))
-            console.log(result.data)
-            navigate("/")
             console.log("user registered")
             console.log(result.data)
             navigate("/")
         } catch (error) {
+            setLoading(false)
             console.log("error in registering")
             console.log(error);
             if(error.response.data.result)return alert(error.response.data.result)
@@ -65,7 +67,7 @@ const Register=()=>{
         <input type="text" placeholder="About(up to 5 words)" value={about} onChange={(e)=>{if (e.target.value.length < 30)setAbout(e.target.value)}} />
         
         <input type="text" placeholder="Place" value={place} onChange={(e)=>{if (e.target.value.length < 21)setPlace(e.target.value)}} /><br/>
-        <button onClick={handleRegister}>Register</button>
+        {loading?<ClipLoader color="yellow" />:<button onClick={handleRegister}>Register</button>}
         <p>Already a user? Please <Link to="/login">log in.</Link></p>
         </div>
         </div>

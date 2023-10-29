@@ -54,9 +54,9 @@ const Register=()=>{
         <h1>Join Our Space Blogging Community</h1>
         <p>Create an astronaut profile and explore a universe of ideas with us.</p>
         <div className="registerForm">
-        <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 21)setName(e.target.value)}} />
+        <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 30)setName(e.target.value)}} />
         
-        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 15)setUsername(e.target.value)}} />
+        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14)setUsername(e.target.value)}} />
         
         <input type="text" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
         
@@ -66,7 +66,7 @@ const Register=()=>{
         
         <input type="text" placeholder="About(up to 5 words)" value={about} onChange={(e)=>{if (e.target.value.length < 30)setAbout(e.target.value)}} />
         
-        <input type="text" placeholder="Place" value={place} onChange={(e)=>{if (e.target.value.length < 21)setPlace(e.target.value)}} /><br/>
+        <input type="text" placeholder="Place" value={place} onChange={(e)=>{if (e.target.value.length < 30)setPlace(e.target.value)}} /><br/>
         {loading?<ClipLoader color="yellow" />:<button onClick={handleRegister}>Register</button>}
         <p>Already a user? Please <Link to="/login">log in.</Link></p>
         </div>

@@ -68,15 +68,15 @@ const Edituser=()=>{
         <button style={{height:"15px",width:"50px",fontSize:"10px"}} onClick={handleDpchange}>CHANGE</button>
         <div className="editProfileForm">
         <p>Full Name</p>
-        <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 21)setName(e.target.value)}} />
+        <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 30)setName(e.target.value)}} />
         <p>Username</p>
-        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 15)setUsername(e.target.value)}} />
+        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14)setUsername(e.target.value)}} />
         <p>Email</p>
         <input type="text" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
         <p>About</p>
         <input type="text" placeholder="About(up to 5 words)" value={about} onChange={(e)=>{if (e.target.value.length < 30)setAbout(e.target.value)}} />
         <p>Place</p>
-        <input type="text" placeholder="Place" value={place} onChange={(e)=>{if (e.target.value.length < 21)setPlace(e.target.value)}} /><br/>
+        <input type="text" placeholder="Place" value={place} onChange={(e)=>{if (e.target.value.length < 30)setPlace(e.target.value)}} /><br/>
         </div>
         {loading?<ClipLoader color="yellow" />:<button onClick={handleEdituser}>Update</button>}
         <br/><br/><br/><br/><br/>

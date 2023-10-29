@@ -6,7 +6,7 @@ import endedPic from "../images/endedPic.png"
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
-import RingLoader from "react-spinners/RingLoader"
+import ClipLoader from "react-spinners/ClipLoader"
 
 const HomeBlogs = () => {
     const[blogs,setBlogs]=useState([])
@@ -84,7 +84,7 @@ const HomeBlogs = () => {
             </div>):
             <>
             {
-                loading?<RingLoader color="yellow" />: <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
+                loading?<ClipLoader color="yellow" />: <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
             } 
            
             <br/><br/><br/><br/><br/>

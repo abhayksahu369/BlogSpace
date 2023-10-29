@@ -3,13 +3,14 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "./homepage/Footer"
 import ClipLoader from "react-spinners/ClipLoader"
+import iconCount from "../config.js"
 const Edituser=()=>{
     const[name,setName]=useState("")
     const[username,setUsername]=useState("")
     const[email,setEmail]=useState("")
     const[about,setAbout]=useState("")
     const[place,setPlace]=useState("")
-    const[dpnumber,setDpnumber]=useState("");
+    const[dpnumber,setDpnumber]=useState(0);
     const [loading, setLoading] = useState(false)
     const navigate=useNavigate();
     const id=JSON.parse(localStorage.getItem("id")).id
@@ -55,7 +56,7 @@ const Edituser=()=>{
     }
 
     const handleDpchange=()=>{
-        const dpnumber=Math.floor( Math.random()*19 + 1)
+        const dpnumber=Math.floor( Math.random()*iconCount.dpcount + 1)
         setDpnumber(dpnumber)
     }
     return(

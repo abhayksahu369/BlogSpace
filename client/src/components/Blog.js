@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Footer from "./homepage/Footer";
-import ClipLoader from "react-spinners/ClipLoader"
+
 
 
 const Blog = () => {
@@ -120,10 +120,10 @@ const Blog = () => {
                         localid === userid ?
                             <div className="blogcontentBottomHandle">
                                 <Link to={`/updateblog/${blogid}`}>
-                                    <i class="ri-edit-box-fill ri-2x"></i>
+                                    <i className="ri-edit-box-fill ri-2x"></i>
                                 </Link>
                                 <div className="delete" onClick={handleDelete}>
-                                    <i class="ri-delete-bin-2-fill ri-2x"></i>
+                                    <i className="ri-delete-bin-2-fill ri-2x"></i>
                                 </div>
 
                             </div> :

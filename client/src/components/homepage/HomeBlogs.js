@@ -72,7 +72,7 @@ const HomeBlogs = () => {
                 {
                 blogs.length>0?(
                     blogs.map((items) =>
-                        <Card items={items} />
+                        <Card items={items} key={items._id} />
                     )):loading?<></>:<h6 style={{color:"yellow"}}>no blogs to display</h6>
                 }
                 {
@@ -85,9 +85,7 @@ const HomeBlogs = () => {
             <>
             {
                 loading?
-                <>
-                <p style={{color:"aliceblue",fontSize:"10px"}}>Loading Blogs...</p>
-                </>:
+                <p style={{color:"aliceblue",fontSize:"10px"}}>Loading Blogs...</p>:
                  <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
             } 
            

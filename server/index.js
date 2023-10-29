@@ -22,7 +22,8 @@ const dbConnect=()=>{
 }
 
 app.use(cors({
-    origin:["https://blogspace96.netlify.app"],
+    origin:["http://localhost:3000"],
+    // origin:["https://blogspace96.netlify.app"],
     credentials:true,
 }))
 app.use(cookieParser())

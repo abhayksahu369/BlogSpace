@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Nav from './components/homepage/Nav';
 import HomeBlogs from './components/homepage/HomeBlogs';
@@ -12,8 +12,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Blog from './components/Blog';
 import Edituser from './components/Edituser';
-import Footer from './components/homepage/Footer';
 import PrivateComponent from './components/PrivateComponent';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<PageNotFound/>} />
         </Routes>
         
 

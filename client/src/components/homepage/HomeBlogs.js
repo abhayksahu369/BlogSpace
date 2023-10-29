@@ -84,7 +84,11 @@ const HomeBlogs = () => {
             </div>):
             <>
             {
-                loading?<ClipLoader color="yellow" />: <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
+                loading?
+                <>
+                <p style={{color:"aliceblue",fontSize:"10px"}}>Loading Blogs...</p>
+                </>:
+                 <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
             } 
            
             <br/><br/><br/><br/><br/>

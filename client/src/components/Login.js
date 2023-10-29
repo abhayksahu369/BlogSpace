@@ -1,12 +1,14 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import ClipLoader from "react-spinners/ClipLoader"
 
 
 const Login = () => {
   const auth=localStorage.getItem("id")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const[loading,setLoading]=useState(false)
   const navigate = useNavigate()
 
   useEffect(()=>{
@@ -17,7 +19,9 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       if (!(email && password)) return alert("all fields are necessary.")
+      setLoading(true)
       const result = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/login`, { email: email, password: password }, { withCredentials: true })
+      setLoading(false)
       if (result.data.name) {
         localStorage.setItem("id", JSON.stringify({ id: result.data._id,name:result.data.name }))
         console.log(result.data)
@@ -26,6 +30,7 @@ const Login = () => {
 
     } catch (error) {
       console.log("error in login.")
+      setLoading(false)
       if (error.response.data.result) {
         alert(error.response.data.result)
       } else {
@@ -46,7 +51,7 @@ const Login = () => {
 
           <input type="text" value={email} placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} ></input>
           <input type="password" value={password} placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} ></input>
-          <button onClick={handleLogin}>login</button>
+          {loading?<ClipLoader color="yellow" />:<button onClick={handleLogin}>login</button>}
           <p>Don't have an account yet? <Link to="/register">Register here.</Link></p>
         </div>
       </div>

@@ -433,6 +433,10 @@ body{
   margin-top: 10px;
   gap:20px;
 }
+.blogcontentBottomHandle a{
+  text-decoration: none;
+}
+
 
 .blogcontentBottomHandle i{
   color:yellow;

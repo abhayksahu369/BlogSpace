@@ -70,7 +70,7 @@ const Edituser=()=>{
         <p>Full Name</p>
         <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 30)setName(e.target.value)}} />
         <p>Username</p>
-        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14)setUsername(e.target.value)}} />
+        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14 && e.target.value.split(" ").length < 2)setUsername(e.target.value)}} />
         <p>Email</p>
         <input type="text" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
         <p>About</p>

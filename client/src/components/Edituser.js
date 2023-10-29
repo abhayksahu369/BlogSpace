@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "./homepage/Footer"
+import ClipLoader from "react-spinners/ClipLoader"
 const Edituser=()=>{
     const[name,setName]=useState("")
     const[username,setUsername]=useState("")
@@ -9,6 +10,7 @@ const Edituser=()=>{
     const[about,setAbout]=useState("")
     const[place,setPlace]=useState("")
     const[dpnumber,setDpnumber]=useState("");
+    const [loading, setLoading] = useState(false)
     const navigate=useNavigate();
     const id=JSON.parse(localStorage.getItem("id")).id
     useEffect(()=>{
@@ -34,12 +36,15 @@ const Edituser=()=>{
     const handleEdituser=async()=>{
         try {
             if(!(name&&username&&email&&about&&place))return alert("all fields are necessary.")
+            setLoading(true)
             const result=await axios.put(`${process.env.REACT_APP_API_ENDPOINT}/user/edituser/${id}`,{name,username,email,about,place,dpnumber})
-            console.log("user edited")
+            setLoading(false)
+            alert("Profile Updated.")
             console.log(result.data)
             navigate("/myprofile")
 
         } catch (error) {
+            setLoading(false)
             console.log("error in editing a user")
             console.log(error);
             if(error.response.data.result)return alert(error.response.data.result)
@@ -72,7 +77,7 @@ const Edituser=()=>{
         <p>Place</p>
         <input type="text" placeholder="Place" value={place} onChange={(e)=>{if (e.target.value.length < 21)setPlace(e.target.value)}} /><br/>
         </div>
-        <button onClick={handleEdituser}>Update</button>
+        {loading?<ClipLoader color="yellow" />:<button onClick={handleEdituser}>Update</button>}
         <br/><br/><br/><br/><br/>
         </div>
         <Footer/>

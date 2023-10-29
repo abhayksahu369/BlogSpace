@@ -2,9 +2,11 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Footer from "./homepage/Footer"
+import ClipLoader from "react-spinners/ClipLoader"
 const EditBlog=()=>{
     const[heading,setHeading]=useState("")
     const[blog,setBlog]=useState("")
+    const [loading, setLoading] = useState(false)
     const navigate=useNavigate()
     const{id}=useParams()
     useEffect(()=>{
@@ -28,11 +30,15 @@ const EditBlog=()=>{
     const handleEditBlog=async()=>{
         try {
             if(!(heading&&blog)) return alert("all fields are necessary.")
+            setLoading(true)
             const result= await axios.put(`${process.env.REACT_APP_API_ENDPOINT}/blog/editblog/${id}`,{heading,blog})
+            setLoading(false)
             if(!result.data.heading) return alert("something went wrong,please try again later.")
+            alert("Blog Updated.")
             back();
             
         } catch (error) {
+            setLoading(false)
             console.log("error in editting a blog.")
             console.error(error)
             alert("something went wrong,please try again later.")
@@ -48,7 +54,7 @@ const EditBlog=()=>{
        
         <textarea className="heading" placeholder="Write a short 7-8 word heading for your blog (to be shown in the feed)." value={heading}  onChange={(e)=>{setHeading(e.target.value)}}/><br/>
         <textarea className="blog" placeholder="Share your thoughts, experiences, or stories here (short or long,any category)." value={blog} onChange={(e)=>{setBlog(e.target.value)}}/><br/>
-        <button onClick={handleEditBlog} >EDIT</button>
+        {loading?<ClipLoader color="yellow" />:<button onClick={handleEditBlog} >EDIT</button>}
 
         <br/><br/><br/><br/><br/>
 

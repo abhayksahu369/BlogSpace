@@ -6,10 +6,12 @@ import endedPic from "../images/endedPic.png"
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
+import RingLoader from "react-spinners/RingLoader"
 
 const HomeBlogs = () => {
     const[blogs,setBlogs]=useState([])
     const[laspage,setLastpage]=useState(false)
+    const[loading,setLoading]=useState(false)
     const[next,setNext]=useState(() => {
         const storedNext = sessionStorage.getItem('next')
         return storedNext? parseInt(storedNext):1;
@@ -21,12 +23,15 @@ const HomeBlogs = () => {
      sessionStorage.setItem('next', next);
       try {
         (async()=>{
+            setLoading(true)
             const result=await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getallblogs?page=${next}&size=3`)
             if(result.data.result){
               setLastpage(true)
               setBlogs([...result.data.blog])
+              setLoading(false)
             }else{
                 setBlogs([...result.data])
+                setLoading(false)
             }
             
             console.log(blogs)
@@ -53,6 +58,7 @@ const HomeBlogs = () => {
                 </Link>    
                 
             </div> */}
+            
             <div className="homeblogsHeading">
                 <h1>Discover Blogs</h1>
             </div>
@@ -67,7 +73,7 @@ const HomeBlogs = () => {
                 blogs.length>0?(
                     blogs.map((items) =>
                         <Card items={items} />
-                    )):<h6 style={{color:"yellow"}}>no blogs to display</h6>
+                    )):loading?<></>:<h6 style={{color:"yellow"}}>no blogs to display</h6>
                 }
                 {
                 laspage? (
@@ -76,12 +82,16 @@ const HomeBlogs = () => {
                 <p>Exploration finished!</p>
 
             </div>):
-            <> 
-            <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
+            <>
+            {
+                loading?<RingLoader color="yellow" />: <p style={{color:"yellow"}} onClick={()=>setNext(next+1)}>Load More</p>
+            } 
+           
             <br/><br/><br/><br/><br/>
             </>
             
              }
+             
               <Footer/>
                 
             </div>

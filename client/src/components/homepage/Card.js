@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Card = (props) => {
     const { heading, _id, userid,planetno,createdat } = props.items;
     const [user, setUser] = useState({})
-    const[dpnumber,setDpnumber]=useState("");
+    const[dpnumber,setDpnumber]=useState(0);
     const[date,setDate]=useState("")
     const id=JSON.parse(localStorage.getItem("id")).id
      
@@ -67,12 +67,12 @@ const Card = (props) => {
                       {
                         id===userid?(
                             <>
-                            <Link to={`/myprofile`}> <div className="profilePhoto"><img src={`https://raw.githubusercontent.com/abhayksahu369/images/main/astronauts/astronaut${dpnumber}.png`} alt="profile" /></div></Link>
+                            <Link to={`/myprofile`}> <div className="profilePhoto"><img src={`https://raw.githubusercontent.com/abhayksahu369/images/main/astronauts/astronaut${dpnumber}.png`} alt="DP" /></div></Link>
                             <Link to={`/myprofile`}><div className="cardUsername">{user.username}</div></Link>
                             </>
                         ):(
                             <>
-                            <Link to={`/userprofile/${user._id}`}> <div className="profilePhoto"><img src={`https://raw.githubusercontent.com/abhayksahu369/images/main/astronauts/astronaut${dpnumber}.png`} alt="profile" /></div></Link>
+                            <Link to={`/userprofile/${user._id}`}> <div className="profilePhoto"><img src={`https://raw.githubusercontent.com/abhayksahu369/images/main/astronauts/astronaut${dpnumber}.png`} alt="" /></div></Link>
                             <Link to={`/userprofile/${user._id}`}><div className="cardUsername">{user.username}</div></Link>
                         </>
                         )
@@ -80,7 +80,7 @@ const Card = (props) => {
                       }
                         
                     </div>
-                    <img src={`https://raw.githubusercontent.com/abhayksahu369/images/main/planets/planet${planetno}.png`} alt="planet" />
+                    <img src={`https://raw.githubusercontent.com/abhayksahu369/images/main/planets/planet${planetno}.png`} alt="" />
 
                 </div>
                 <Link to={`/blog/${_id}/${userid}`}>

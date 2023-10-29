@@ -6,9 +6,9 @@ const Nav = () => {
     return (
         <>
             <div className="nav">
-                 <Link to="/menu"><i class="ri-menu-line ri-2x"></i></Link>
+                 <Link to="/menu"><i className="ri-menu-line ri-2x"></i></Link>
                 <h1>BLOGSPACE</h1>
-                <i class="ri-user-search-fill ri-2x"></i>
+                <i className="ri-user-search-fill ri-2x"></i>
                 
                 
 

@@ -9,7 +9,7 @@ import ClipLoader from "react-spinners/ClipLoader"
 const MyProfile = () => {
     const [user, setUser] = useState({});
     const [blogs, setBlogs] = useState([]);
-    const[dpnumber,setDpnumber]=useState("");
+    const[dpnumber,setDpnumber]=useState(0);
     const[loadinguser,setLoadinguser]=useState(false)
     const[loadingblog,setLoadingblog]=useState(false)
     const id=JSON.parse(localStorage.getItem("id")).id
@@ -67,7 +67,7 @@ const MyProfile = () => {
                     <p>{user.about}</p>
                     <p>{user.place}</p>
                     <Link to="/edituser">
-                    <i class="ri-edit-box-fill ri-2x"></i>
+                    <i className="ri-edit-box-fill ri-2x"></i>
                    </Link>
                 </div>
             </div>
@@ -81,10 +81,10 @@ const MyProfile = () => {
 
                     blogs.length > 0?(
                         blogs.map((items) => (
-                            <div className="myprofilecard">
-                                <Card items={items} />
+                            <div className="myprofilecard" key={items._id}>
+                                <Card items={items}  />
                                 <Link to={`/updateblog/${items._id}`}>
-                                    <i class="ri-edit-box-fill ri-2x"></i>
+                                    <i className="ri-edit-box-fill ri-2x"></i>
                                 </Link>
 
                             </div>

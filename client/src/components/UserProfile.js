@@ -11,7 +11,7 @@ const UserProfile = () => {
     const[blogs,setBlogs]=useState([]);
     const[loadinguser,setLoadinguser]=useState(false)
     const[loadingblog,setLoadingblog]=useState(false)
-    const[dpnumber,setDpnumber]=useState("");
+    const[dpnumber,setDpnumber]=useState(0);
     const {id}=useParams();
     useEffect(()=>{
        getUser()
@@ -73,10 +73,10 @@ const UserProfile = () => {
             {
                 blogs.length>0?(               
                     blogs.map((items) =>(
-                        <>
-                        <Card items={items} />
+                    
+                        <Card items={items} key={items._id} />
                         
-                        </>
+        
                     )
                     )):<> {loadingblog?<></>:<h4 style={{color:"yellow"}}>no blogs to display.</h4>}</>
             }

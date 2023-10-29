@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import ClipLoader from "react-spinners/ClipLoader"
-
+import iconCount from "../config.js"
 
 
 const Register=()=>{
@@ -27,7 +27,7 @@ const Register=()=>{
     const handleRegister=async()=>{
        
         try {
-            const dpnumber=Math.floor( Math.random()*19 + 1)
+            const dpnumber=Math.floor( Math.random()*iconCount.dpcount + 1)
             if(!(name&&username&&email&&password&&repassword&&about&&place))return alert("all fields are necessary.")
             if(password!==repassword)return alert("password and Retype password are not matching.")
             setLoading(true)

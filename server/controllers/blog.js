@@ -13,7 +13,13 @@ const createBlog=async(req,res,next)=>{
         if(!(req.body.heading&&req.body.blog)){
             return res.status(400).json({result:"All fields are necessary."})
         }
-        let createdBlog=new Blog(req.body)
+        let createdBlog=new Blog({
+            heading:req.body.heading,
+            blog:req.body.blog,
+            userid:req.userid,
+            planetno:req.body.planetno,
+            createdat:req.body.createdat
+        })
         createdBlog=await createdBlog.save()
         console.log("blog created")
         res.status(200).json(createdBlog)

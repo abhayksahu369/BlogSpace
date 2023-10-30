@@ -1,11 +1,14 @@
 const express=require("express");
 const route=express.Router();
-const {getAllUsers,getaUser,editUser}=require("../controllers/user")
+const {getAllUsers,getaUser,editUser,searchUsers}=require("../controllers/user")
+const {verifyUser,verifyAdmin} =require("../authMiddlewares")
 
-route.get("/getauser/:id",getaUser)
+route.get("/getauser/:id",verifyUser,getaUser)
 
-route.put("/edituser/:id",editUser)
+route.put("/edituser/:id",verifyAdmin,editUser)
 
-route.get("/getallusers",getAllUsers)
+route.get("/getallusers",verifyUser,getAllUsers)
+
+route.get("/searchusers/:key",verifyUser,searchUsers)
 
 module.exports=route

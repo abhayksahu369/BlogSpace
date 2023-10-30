@@ -14,6 +14,7 @@ const getaUser=async(req,res,next)=>{
 
 const editUser=async(req,res,next)=>{
     try {
+        if(req.userid!==req.params.id) return  res.status(401).json({ message: 'unauthorized user' });
         const user=await User.findByIdAndUpdate(req.params.id,req.body,{new:true})
         user.password=undefined
         console.log("user edited")
@@ -35,5 +36,14 @@ const getAllUsers=async(req,res,next)=>{
         next(error)
     }
 }
+const searchUsers=async(req,res,next)=>{
+    try{
+       const result =await User.find({$or:[{name:{$regex:req.params.key,$options: 'i'}},{username:{$regex:req.params.key,$options: 'i'}}]}).select("-password")
+       res.status(200).json(result)
+    }catch(error){
+        console.log("***********error in searching *********")
+        next(error)
+    }
+}
 
-module.exports={getAllUsers,getaUser,editUser}
+module.exports={getAllUsers,getaUser,editUser,searchUsers}

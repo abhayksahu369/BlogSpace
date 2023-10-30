@@ -8,8 +8,8 @@ import Footer from "./homepage/Footer";
 const Blog = () => {
     const [blog, setBlog] = useState({})
     const [user, setUser] = useState({})
-    const [dpnumber, setDpnumber] = useState("")
-    const [planetno, setPlanetno] = useState("")
+    const [dpnumber, setDpnumber] = useState(0)
+    const [planetno, setPlanetno] = useState(0)
     const [date, setDate] = useState("")
     const [loading, setLoading] = useState(false)
     const { userid, blogid } = useParams();

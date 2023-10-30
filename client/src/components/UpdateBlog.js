@@ -9,13 +9,22 @@ const EditBlog=()=>{
     const [loading, setLoading] = useState(false)
     const navigate=useNavigate()
     const{id}=useParams()
+    
+    const token=JSON.parse((localStorage.getItem("token"))).token
+    const authAxios =axios.create({
+    baseURL:process.env.REACT_APP_API_ENDPOINT,
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+   })
+    
     useEffect(()=>{
      getblog()
     },[])
     
     const getblog=async()=>{
        try {
-         const result=await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getablog/${id}`)
+         const result=await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getablog/${id}`)
          if(!result.data.heading) return alert("something went wrong,please try again later.")
          setHeading(result.data.heading)
         setBlog(result.data.blog)
@@ -31,7 +40,7 @@ const EditBlog=()=>{
         try {
             if(!(heading&&blog)) return alert("all fields are necessary.")
             setLoading(true)
-            const result= await axios.put(`${process.env.REACT_APP_API_ENDPOINT}/blog/editblog/${id}`,{heading,blog})
+            const result= await authAxios.put(`${process.env.REACT_APP_API_ENDPOINT}/blog/editblog/${id}`,{heading,blog})
             setLoading(false)
             if(!result.data.heading) return alert("something went wrong,please try again later.")
             alert("Blog Updated.")

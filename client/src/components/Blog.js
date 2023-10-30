@@ -14,7 +14,16 @@ const Blog = () => {
     const [loading, setLoading] = useState(false)
     const { userid, blogid } = useParams();
     const localid = JSON.parse(localStorage.getItem("id")).id
-    const navigate = useNavigate();
+
+    const token=JSON.parse((localStorage.getItem("token"))).token
+    const authAxios =axios.create({
+    baseURL:process.env.REACT_APP_API_ENDPOINT,
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+   })
+    
+   const navigate = useNavigate();
     useEffect(() => {
         getUser()
         getBlog()
@@ -54,7 +63,7 @@ const Blog = () => {
 
     const getUser = async () => {
         try {
-            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${userid}`)
+            const result = await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${userid}`)
             setUser(result.data);
             setDpnumber(result.data.dpnumber)
 
@@ -68,7 +77,7 @@ const Blog = () => {
     const getBlog = async () => {
         try {
             setLoading(true)
-            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getablog/${blogid}`)
+            const result = await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getablog/${blogid}`)
             setLoading(false)
             setBlog(result.data)
             setPlanetno(result.data.planetno)
@@ -84,7 +93,7 @@ const Blog = () => {
         try {
             const deleteBLog = window.confirm("Delete this blog?")
             if (deleteBLog) {
-                await axios.delete(`${process.env.REACT_APP_API_ENDPOINT}/blog/deleteblog/${blogid}`)
+                await authAxios.delete(`${process.env.REACT_APP_API_ENDPOINT}/blog/deleteblog/${blogid}`)
                 back()
             }
 

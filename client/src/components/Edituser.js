@@ -14,13 +14,21 @@ const Edituser=()=>{
     const [loading, setLoading] = useState(false)
     const navigate=useNavigate();
     const id=JSON.parse(localStorage.getItem("id")).id
+
+    const token=JSON.parse((localStorage.getItem("token"))).token
+    const authAxios =axios.create({
+    baseURL:process.env.REACT_APP_API_ENDPOINT,
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+   })
     useEffect(()=>{
       getUser();
     },[])
     const getUser = async () => {
         try {
            
-            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${id}`)
+            const result = await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${id}`)
             setName(result.data.name)
             setUsername(result.data.username)
             setEmail(result.data.email)
@@ -38,7 +46,7 @@ const Edituser=()=>{
         try {
             if(!(name&&username&&email&&about&&place))return alert("all fields are necessary.")
             setLoading(true)
-            const result=await axios.put(`${process.env.REACT_APP_API_ENDPOINT}/user/edituser/${id}`,{name,username,email,about,place,dpnumber})
+            const result=await authAxios.put(`${process.env.REACT_APP_API_ENDPOINT}/user/edituser/${id}`,{name,username,email,about,place,dpnumber})
             setLoading(false)
             alert("Profile Updated.")
             console.log(result.data)

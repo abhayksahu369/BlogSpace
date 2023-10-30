@@ -8,6 +8,14 @@ const Card = (props) => {
     const[dpnumber,setDpnumber]=useState(0);
     const[date,setDate]=useState("")
     const id=JSON.parse(localStorage.getItem("id")).id
+
+    const token=JSON.parse((localStorage.getItem("token"))).token
+    const authAxios =axios.create({
+    baseURL:process.env.REACT_APP_API_ENDPOINT,
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+   })
      
     //  console.log(new Date("Sun Oct 22 2023 23:44:46 GMT+0530 (India Standard Time)"))
     //  console.log(new Date())
@@ -16,7 +24,7 @@ const Card = (props) => {
         getTime()
         ;(async () => {
             try {
-                const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${userid}`)
+                const result = await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${userid}`)
                 setUser(result.data)
                 setDpnumber(result.data.dpnumber)
 

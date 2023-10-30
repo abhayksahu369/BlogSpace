@@ -12,16 +12,16 @@ const CreateBlog=()=>{
     const[blog,setBlog]=useState("")
     const [loading, setLoading] = useState(false)
     const navigate=useNavigate()
-    const id=JSON.parse(localStorage.getItem("id")).id
+   
+    
+    
     const token=JSON.parse((localStorage.getItem("token"))).token
-
-
     const authAxios =axios.create({
     baseURL:process.env.REACT_APP_API_ENDPOINT,
     headers:{
         Authorization:`Bearer ${token}`
     }
-})
+   })
     
     
 
@@ -33,7 +33,7 @@ const CreateBlog=()=>{
         const planetno=Math.floor( Math.random()*planetCount + 1)
         const createdat=new Date(Date.now());
         setLoading(true)
-        const result=await authAxios.post(`${process.env.REACT_APP_API_ENDPOINT}/blog/createblog`,{heading,blog,userid:id,planetno,createdat})
+        const result=await authAxios.post(`${process.env.REACT_APP_API_ENDPOINT}/blog/createblog`,{heading,blog,planetno,createdat})
         setLoading(false)
         alert("BLOG LAUNCHED!!")
         navigate("/")

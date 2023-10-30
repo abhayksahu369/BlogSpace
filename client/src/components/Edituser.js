@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "./homepage/Footer"
 import ClipLoader from "react-spinners/ClipLoader"
-import iconCount from "../config.js"
+import {dpcount} from "../config.js"
 const Edituser=()=>{
     const[name,setName]=useState("")
     const[username,setUsername]=useState("")
@@ -56,7 +56,7 @@ const Edituser=()=>{
     }
 
     const handleDpchange=()=>{
-        const dpnumber=Math.floor( Math.random()*iconCount.dpcount + 1)
+        const dpnumber=Math.floor( Math.random()*dpcount + 1)
         setDpnumber(dpnumber)
     }
     return(

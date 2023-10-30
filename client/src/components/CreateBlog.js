@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./homepage/Footer";
 import ClipLoader from "react-spinners/ClipLoader"
-import iconCount from "../config.js"
+import {planetCount} from "../config.js"
+import {authAxios} from "../config"
 
 
 const CreateBlog=()=>{
@@ -20,10 +21,10 @@ const CreateBlog=()=>{
        try {
 
         if(!(heading&&blog))return alert("all fields are necessary.")
-        const planetno=Math.floor( Math.random()*iconCount.planetCount + 1)
+        const planetno=Math.floor( Math.random()*planetCount + 1)
         const createdat=new Date(Date.now());
         setLoading(true)
-        const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/blog/createblog`,{heading,blog,userid:id,planetno,createdat})
+        const result=await authAxios.post(`${process.env.REACT_APP_API_ENDPOINT}/blog/createblog`,{heading,blog,userid:id,planetno,createdat})
         setLoading(false)
         alert("BLOG LAUNCHED!!")
         navigate("/")

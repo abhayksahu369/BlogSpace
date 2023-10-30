@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import ClipLoader from "react-spinners/ClipLoader"
-import iconCount from "../config.js"
+import {dpcount} from "../config.js"
 
 
 const Register=()=>{
@@ -27,15 +27,16 @@ const Register=()=>{
     const handleRegister=async()=>{
        
         try {
-            const dpnumber=Math.floor( Math.random()*iconCount.dpcount + 1)
+            const dpnumber=Math.floor( Math.random()*dpcount + 1)
             if(!(name&&username&&email&&password&&repassword&&about&&place))return alert("all fields are necessary.")
             if(password!==repassword)return alert("password and Retype password are not matching.")
             setLoading(true)
             const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/signup`,{name,username,email,password,about,place,dpnumber})
             setLoading(false)
-            localStorage.setItem("id", JSON.stringify({ id: result.data._id,name:result.data.name }))
+            localStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
+            localStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
             console.log("user registered")
-            console.log(result.data)
+            console.log(result.data.user)
             navigate("/")
         } catch (error) {
             setLoading(false)

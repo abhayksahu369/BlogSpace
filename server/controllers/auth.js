@@ -25,8 +25,8 @@ const signUp= async (req, res,next) => {
         newUser = await newUser.save();
         newUser.password = undefined;
         const token=jwt.sign({id:newUser._id},process.env.JWT_KEY)
-        res.cookie("token",token,{httpOnly:true,expires:new Date(Date.now()+1000*60*60*24*10)})
-        res.status(200).json(newUser)
+        // res.cookie("token",token,{httpOnly:true,expires:new Date(Date.now()+1000*60*60*24*10)})
+        res.status(200).json({user:newUser,auth:token})
         console.log("**********new user added************")
         console.log(newUser)
     } catch (error) {
@@ -56,7 +56,8 @@ const login= async (req, res,next) => {
         }
         const token=jwt.sign({id:user._id},process.env.JWT_KEY)
         user.password=undefined;
-        res.cookie("token",token,{httpOnly:true,expires:new Date(Date.now()+1000*60*60*24*10)}).status(200).json(user)
+        // res.cookie("token",token,{httpOnly:true,expires:new Date(Date.now()+1000*60*60*24*10)}).status(200).json(user)
+        res.status(200).json({user:user,auth:token})
         console.log("**********user login************")
         console.log(user)
     } catch (error) {

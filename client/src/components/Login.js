@@ -22,9 +22,11 @@ const Login = () => {
       setLoading(true)
       const result = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/login`, { email: email, password: password }, { withCredentials: true })
       setLoading(false)
-      if (result.data.name) {
-        localStorage.setItem("id", JSON.stringify({ id: result.data._id,name:result.data.name }))
+      if (result.data.user.name) {
+        localStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
+        localStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
         console.log(result.data)
+        console.log(result.data.user)
         navigate("/")
       }
 

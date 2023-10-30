@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import astro from "../images/astro.png";
 import rocket from "../images/rocket.png"
 import endedPic from "../images/endedPic.png"
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
-import ClipLoader from "react-spinners/ClipLoader"
+
 
 const HomeBlogs = () => {
     const[blogs,setBlogs]=useState([])
@@ -17,6 +15,14 @@ const HomeBlogs = () => {
         return storedNext? parseInt(storedNext):1;
           
       })
+
+    const token=JSON.parse((localStorage.getItem("token"))).token
+    const authAxios =axios.create({
+    baseURL:process.env.REACT_APP_API_ENDPOINT,
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+   })
     
    
     useEffect(()=>{
@@ -24,7 +30,7 @@ const HomeBlogs = () => {
       try {
         (async()=>{
             setLoading(true)
-            const result=await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getallblogs?page=${next}&size=3`)
+            const result=await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getallblogs?page=${next}&size=3`)
             if(result.data.result){
               setLastpage(true)
               setBlogs([...result.data.blog])

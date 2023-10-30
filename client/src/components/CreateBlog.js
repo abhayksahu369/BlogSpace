@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./homepage/Footer";
 import ClipLoader from "react-spinners/ClipLoader"
 import {planetCount} from "../config.js"
-import {authAxios} from "../config"
+
 
 
 const CreateBlog=()=>{
@@ -13,6 +13,15 @@ const CreateBlog=()=>{
     const [loading, setLoading] = useState(false)
     const navigate=useNavigate()
     const id=JSON.parse(localStorage.getItem("id")).id
+    const token=JSON.parse((localStorage.getItem("token"))).token
+
+
+    const authAxios =axios.create({
+    baseURL:process.env.REACT_APP_API_ENDPOINT,
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+})
     
     
 

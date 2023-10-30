@@ -9,6 +9,7 @@ const Menu = () => {
             if(logout){
                 navigate("/login")
                 localStorage.removeItem("id");
+                localStorage.removeItem("token");
                 sessionStorage.removeItem("next")
             }
            

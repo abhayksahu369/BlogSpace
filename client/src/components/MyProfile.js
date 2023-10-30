@@ -14,6 +14,14 @@ const MyProfile = () => {
     const[loadingblog,setLoadingblog]=useState(false)
     const id=JSON.parse(localStorage.getItem("id")).id
 
+    const token=JSON.parse((localStorage.getItem("token"))).token
+    const authAxios =axios.create({
+    baseURL:process.env.REACT_APP_API_ENDPOINT,
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+   })
+
     useEffect(() => {
         getUser()
         getBlogs()
@@ -22,7 +30,7 @@ const MyProfile = () => {
     const getUser = async () => {
         try {
             setLoadinguser(true)
-            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${id}`)
+            const result = await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getauser/${id}`)
             setLoadinguser(false)
             setUser(result.data);
             setDpnumber(result.data.dpnumber)
@@ -37,7 +45,7 @@ const MyProfile = () => {
     const getBlogs = async () => {
         try {
             setLoadingblog(true)
-            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getuserblogs/${id}`)
+            const result = await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getuserblogs/${id}`)
             setLoadingblog(false)
             setBlogs(result.data);
 

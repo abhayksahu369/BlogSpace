@@ -46,7 +46,8 @@ const Edituser=()=>{
         try {
             if(!(name&&username&&email&&about&&place))return alert("all fields are necessary.")
             setLoading(true)
-            const result=await authAxios.put(`${process.env.REACT_APP_API_ENDPOINT}/user/edituser/${id}`,{name,username,email,about,place,dpnumber})
+            const lowercaseUsername=username.toLowerCase();
+            const result=await authAxios.put(`${process.env.REACT_APP_API_ENDPOINT}/user/edituser/${id}`,{name,username:lowercaseUsername,email,about,place,dpnumber})
             setLoading(false)
             alert("Profile Updated.")
             console.log(result.data)
@@ -78,7 +79,7 @@ const Edituser=()=>{
         <p>Full Name</p>
         <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 30)setName(e.target.value)}} />
         <p>Username</p>
-        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14 && e.target.value.split(" ").length < 2)setUsername(e.target.value)}} />
+        <input type="text" className="username" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14 && e.target.value.split(" ").length < 2)setUsername(e.target.value)}} />
         <p>Email</p>
         <input type="text" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
         <p>About</p>

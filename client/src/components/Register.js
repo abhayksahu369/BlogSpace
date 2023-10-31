@@ -31,7 +31,8 @@ const Register=()=>{
             if(!(name&&username&&email&&password&&repassword&&about&&place))return alert("all fields are necessary.")
             if(password!==repassword)return alert("password and Retype password are not matching.")
             setLoading(true)
-            const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/signup`,{name,username,email,password,about,place,dpnumber})
+            const lowercaseUsername=username.toLowerCase();
+            const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/signup`,{name,username:lowercaseUsername,email,password,about,place,dpnumber})
             setLoading(false)
             localStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
             localStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
@@ -57,7 +58,7 @@ const Register=()=>{
         <div className="registerForm">
         <input type="text" placeholder="Full Name" value={name} onChange={(e)=>{if (e.target.value.length < 30)setName(e.target.value)}} />
         
-        <input type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14 && e.target.value.split(" ").length < 2)setUsername(e.target.value)}} />
+        <input className="username" type="text" placeholder="Username(up to 15 characters)" value={username} onChange={(e)=>{if (e.target.value.length < 14 && e.target.value.split(" ").length < 2)setUsername(e.target.value)}} />
         
         <input type="text" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
         

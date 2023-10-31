@@ -40,10 +40,10 @@ const HomeBlogs = () => {
                 setLoading(false)
             }
             
-            console.log(blogs)
 
         })()
       } catch (error) {
+        setLoading(false)
         console.log("error getting all the blogs in home page")
         console.error(error)
         alert("something went wrong,please try again later.")

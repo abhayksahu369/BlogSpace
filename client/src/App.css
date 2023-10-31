@@ -500,6 +500,11 @@ body{
   
   
 }
+.registerForm .username{
+  text-transform: lowercase;
+  
+  
+}
 .registerForm input::placeholder{
   color:aliceblue;
   font-family:'Space Mono',Arial, Helvetica, sans-serif ;
@@ -557,6 +562,11 @@ body{
   font-family:'Space Mono',Arial, Helvetica, sans-serif ;
 
 }
+.editProfileForm .username{
+  text-transform: lowercase;
+  
+  
+}
 .editProfileForm input:focus{
   outline: none;
   border-bottom: 3px solid yellow;
@@ -572,6 +582,57 @@ body{
   text-align: center;
   margin-top: 10px;
 
+}
+/* *****************************search User******************************* */
+.searchInput{
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.searchInput input{
+  background-color: transparent;
+  border:none;
+  border-bottom: 2px solid aliceblue;
+  height:30px;
+  width:95%;
+  color:aliceblue;
+  font-family:'Space Mono',Arial, Helvetica, sans-serif ;
+
+}
+.searchInput input:focus{
+  outline: none;
+  border-bottom: 3px solid yellow;
+}
+.spaceExplorers{
+  color:yellow;
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+  margin:10px ;
+}
+.userContent{
+  display:flex;
+  margin: 10px ;
+  align-items: center;
+  
+}
+.userContent img{
+  width:50px;
+  height:50px;
+}
+.usercontentRight{
+  margin-left: 10px;
+  color:aliceblue
+}
+.usersList a{
+  text-decoration: none;
+}
+.usercontentRight h5{
+  font-family:'Audiowide',Arial, Helvetica, sans-serif ;
+}
+.usercontentRight p{
+ font-size: 10px;
+ font-family:'Space Mono',Arial, Helvetica, sans-serif ;
 }
 
 

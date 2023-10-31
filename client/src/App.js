@@ -13,6 +13,7 @@ import Register from './components/Register';
 import Blog from './components/Blog';
 import Edituser from './components/Edituser';
 import PrivateComponent from './components/PrivateComponent';
+import SearchUser from './components/SearchUser';
 import PageNotFound from './components/PageNotFound';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/updateblog/:id" element={<UpdateBlog />} />
             <Route path="/blog/:blogid/:userid" element={<Blog />} />
             <Route path="/edituser" element={<Edituser />} />
+            <Route path="/searchuser" element={<SearchUser/>}/>
           </Route>
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />

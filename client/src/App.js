@@ -15,6 +15,8 @@ import Edituser from './components/Edituser';
 import PrivateComponent from './components/PrivateComponent';
 import SearchUser from './components/SearchUser';
 import PageNotFound from './components/PageNotFound';
+import ReportAnIssue from './components/ReportAnIssue';
+import ContactUs from './components/ContactUs';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
             <Route path="/blog/:blogid/:userid" element={<Blog />} />
             <Route path="/edituser" element={<Edituser />} />
             <Route path="/searchuser" element={<SearchUser/>}/>
+            <Route path="/reportanissue" element={<ReportAnIssue/>}/>
+            <Route path="/contactus" element={<ContactUs/>}/>
           </Route>
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />

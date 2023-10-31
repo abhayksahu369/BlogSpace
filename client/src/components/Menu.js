@@ -28,6 +28,8 @@ const Menu = () => {
                 <Link to="/myprofile"><div className="menulist">MY PROFILE</div></Link>
                 <Link to="/edituser"><div className="menulist">EDIT PROFILE</div></Link>
                 <Link to="/createblog"><div className="menulist">CREATE A BLOG</div></Link>
+                <Link to="/reportanissue"><div className="menulist">REPORT AN ISSUE</div></Link>
+                <Link to="/contactus"><div className="menulist">CONTACT US</div></Link>
                 <div className="menulist" onClick={handleLogout}>LOGOUT</div>
                 <div className="menulist" onClick={back}>BACK</div>
                 </>

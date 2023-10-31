@@ -27,10 +27,24 @@ const editUser=async(req,res,next)=>{
 
 const getAllUsers=async(req,res,next)=>{
     try {
-        const users=await User.find().select("-password")
-       
-        console.log("all users are displayed")
-        res.status(200).json(users)
+        let users=await User.find().select("-password")
+        users=users.reverse()
+        const page=parseInt(req.query.page);
+        const size=parseInt(req.query.size);
+        const startindex=0;
+        let lastindex=page*size;
+        if(users.length<=lastindex){
+            lastindex=users.length;
+            let sliceusers=users.slice(startindex,lastindex)
+            console.log(" last page user are displayed")
+            res.status(200).json({ user: sliceusers, result: "lastpage" });
+
+        }else{
+            let sliceusers=users.slice(startindex,lastindex)
+            console.log("users are displayed")
+            res.status(200).json(sliceusers)
+        }
+        
     } catch (error) {
         console.log("***********error in get all user*************")
         next(error)

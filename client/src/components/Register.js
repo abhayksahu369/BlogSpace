@@ -6,7 +6,7 @@ import {dpcount} from "../config.js"
 
 
 const Register=()=>{
-    const auth=localStorage.getItem("id")
+    const auth=localStorage.getItem("token")
     const[name,setName]=useState("")
     const[username,setUsername]=useState("")
     const[email,setEmail]=useState("")

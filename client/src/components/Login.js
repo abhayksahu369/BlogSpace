@@ -25,8 +25,6 @@ const Login = () => {
       if (result.data.user.name) {
         localStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
         localStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
-        console.log(result.data)
-        console.log(result.data.user)
         navigate("/")
       }
 

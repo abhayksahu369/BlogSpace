@@ -17,6 +17,8 @@ import SearchUser from './components/SearchUser';
 import PageNotFound from './components/PageNotFound';
 import ReportAnIssue from './components/ReportAnIssue';
 import ContactUs from './components/ContactUs';
+import GuestPage from './components/GuestPage';
+import About from './components/About';
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/guestpage" element={<GuestPage/>}/>
+          <Route path="/about" element={<About/>}/>
           <Route path="*" element={<PageNotFound/>} />
         </Routes>
         

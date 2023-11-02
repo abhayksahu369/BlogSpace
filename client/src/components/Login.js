@@ -55,6 +55,10 @@ const Login = () => {
           <p>Don't have an account yet? <Link to="/register">Register here.</Link></p>
         </div>
       </div>
+      <br/><br/><br/>
+      <div style={{color:"aliceblue",fontSize:"10px",position:"absolute",bottom:"10px",left:"50%",transform:"translate(-50%,0)",textAlign:"center"}}>
+                <Link style={{color:"aliceblue"}} to="/about"> About </Link><p>© 2023 BlogSpace. All rights reserved. </p>
+        </div>
     </>
   )
 }

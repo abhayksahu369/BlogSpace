@@ -10,11 +10,6 @@ const About=()=>{
     
     
    
-    const token=JSON.parse((localStorage.getItem("token"))).token
-    const user=JSON.parse((localStorage.getItem("id")))
-    
-    
-
 
     
     return(

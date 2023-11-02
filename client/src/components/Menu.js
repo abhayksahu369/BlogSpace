@@ -35,6 +35,7 @@ const Menu = () => {
                 </>
                     ):(
                         <>
+                         <Link to="/guestpage"><div className="menulist">HOME</div></Link>
                          <Link to="/login"><div className="menulist">LOGIN</div></Link>
                          <Link to="/register"><div className="menulist">REGISTER</div></Link>
                          <div className="menulist" onClick={back}>BACK</div>

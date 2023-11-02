@@ -52,7 +52,7 @@ const Register=()=>{
     return(
         <>
         <br/><br/><br/>
-        <div className="registerContent">
+        <div className="registerContent" style={{position:"relative"}}>
         <h1>Join Our Space Blogging Community</h1>
         <p>Create an astronaut profile and explore a universe of ideas with us.</p>
         <div className="registerForm">
@@ -72,7 +72,11 @@ const Register=()=>{
         {loading?<ClipLoader color="yellow" />:<button onClick={handleRegister}>Register</button>}
         <p>Already a user? Please <Link to="/login">log in.</Link></p>
         </div>
+        
         </div>
+        <div style={{color:"aliceblue",fontSize:"10px",position:"absolute",bottom:"10px",left:"50%",transform:"translate(-50%,0)",textAlign:"center"}}>
+                <Link style={{color:"aliceblue"}} to="/about"> About </Link><p>© 2023 BlogSpace. All rights reserved. </p>
+                </div>
         
         </>
     )

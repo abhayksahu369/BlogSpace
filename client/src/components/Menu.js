@@ -7,7 +7,7 @@ const Menu = () => {
     const handleLogout = () => {
             const logout=window.confirm("Are you sure you want to log out?")
             if(logout){
-                navigate("/login")
+                navigate("/guestpage")
                 localStorage.removeItem("id");
                 localStorage.removeItem("token");
                 sessionStorage.removeItem("next")

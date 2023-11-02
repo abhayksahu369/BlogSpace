@@ -72,11 +72,12 @@ const Register=()=>{
         {loading?<ClipLoader color="yellow" />:<button onClick={handleRegister}>Register</button>}
         <p>Already a user? Please <Link to="/login">log in.</Link></p>
         </div>
-        
-        </div>
+        <br/><br/>
         <div style={{color:"aliceblue",fontSize:"10px",position:"absolute",bottom:"10px",left:"50%",transform:"translate(-50%,0)",textAlign:"center"}}>
-                <Link style={{color:"aliceblue"}} to="/about"> About </Link><p>© 2023 BlogSpace. All rights reserved. </p>
-                </div>
+                <Link style={{color:"aliceblue"}} to="/about"> About </Link><p style={{color:"aliceblue",fontSize:"10px"}}>© 2023 BlogSpace. All rights reserved. </p>
+        </div>
+        </div>
+       
         
         </>
     )

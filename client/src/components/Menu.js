@@ -44,10 +44,15 @@ const Menu = () => {
 
                 }
                 
+               
 
             </div>
-            <br /><br /><br /><br />
-
+             <br /><br /><br />
+             <div style={{ color: "aliceblue", fontSize: "10px",  textAlign: "center" ,marginTop:"50px"}}>
+                    <Link style={{ color: "aliceblue" }} to="/about"> About </Link><p>© 2023 BlogSpace. All rights reserved. </p>
+                </div>
+                <br/>
+               
         </>
     )
 }

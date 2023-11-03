@@ -46,7 +46,7 @@ const ReportAnIssue=()=>{
         <h1>Report An Issue</h1>
         <p>Help us enhance the platform by reporting any issues or suggesting improvements. Found a bug? Your feedback is valuable in addressing it.</p>
         <textarea className="blog" placeholder="Please write down the issue you are facing" value={issue}  onChange={(e)=>{setIssue(e.target.value)}}/><br/>
-       {loading?<ClipLoader color="yellow" />:<button onClick={handleReport}>SEND</button>}
+       {loading?<ClipLoader color="yellow" />:<button onClick={handleReport}>REPORT</button>}
          <br/><br/><br/><br/><br/>
 
 

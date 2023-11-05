@@ -7,9 +7,9 @@ const Card = (props) => {
     const [user, setUser] = useState({})
     const[dpnumber,setDpnumber]=useState(0);
     const[date,setDate]=useState("")
-    const id=JSON.parse(localStorage.getItem("id")).id
+    const id=JSON.parse(sessionStorage.getItem("id")).id
 
-    const token=JSON.parse((localStorage.getItem("token"))).token
+    const token=JSON.parse((sessionStorage.getItem("token"))).token
     const authAxios =axios.create({
     baseURL:process.env.REACT_APP_API_ENDPOINT,
     headers:{

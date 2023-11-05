@@ -13,9 +13,9 @@ const Blog = () => {
     const [date, setDate] = useState("")
     const [loading, setLoading] = useState(false)
     const { userid, blogid } = useParams();
-    const localid = JSON.parse(localStorage.getItem("id")).id
+    const localid = JSON.parse(sessionStorage.getItem("id")).id
 
-    const token=JSON.parse((localStorage.getItem("token"))).token
+    const token=JSON.parse((sessionStorage.getItem("token"))).token
     const authAxios =axios.create({
     baseURL:process.env.REACT_APP_API_ENDPOINT,
     headers:{

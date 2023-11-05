@@ -12,7 +12,7 @@ const SearchUser = () => {
     const [key, setKey] = useState("")
     const [search, setSearch] = useState(false)
     const [next, setNext] = useState(1)
-    const token = JSON.parse((localStorage.getItem("token"))).token
+    const token = JSON.parse((sessionStorage.getItem("token"))).token
     const authAxios = axios.create({
         baseURL: process.env.REACT_APP_API_ENDPOINT,
         headers: {

@@ -11,8 +11,8 @@ const ContactUs=()=>{
     const [loading, setLoading] = useState(false)
     
    
-    const token=JSON.parse((localStorage.getItem("token"))).token
-    const user=JSON.parse((localStorage.getItem("id")))
+    const token=JSON.parse((sessionStorage.getItem("token"))).token
+    const user=JSON.parse((sessionStorage.getItem("id")))
     const authAxios =axios.create({
     baseURL:process.env.REACT_APP_API_ENDPOINT,
     headers:{
@@ -50,7 +50,7 @@ const ContactUs=()=>{
        {loading?<ClipLoader color="yellow" />:<button onClick={handleReport}>SEND</button>}
          <br/><br/><br/><br/><br/>
           <p style={{color:"aliceblue"}}>Or please feel free to contact me on linkedIn if you have any questions, suggestions, or just want to connect. Your message or connection request is always welcome.</p>
-          <a target="_blank" href="https://www.linkedin.com/in/abhay-kumar-sahu-6a18b5253/" style={{textDecoration:"none",color:"yellow"}}><i class="ri-linkedin-box-fill ri-3x"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/abhay-kumar-sahu-6a18b5253/" style={{textDecoration:"none",color:"yellow"}}><i className="ri-linkedin-box-fill ri-3x"></i></a>
           <br/><br/><br/><br/>
 
         </div>

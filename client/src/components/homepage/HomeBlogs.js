@@ -16,7 +16,7 @@ const HomeBlogs = () => {
           
       })
 
-    const token=JSON.parse((localStorage.getItem("token"))).token
+    const token=JSON.parse((sessionStorage.getItem("token"))).token
     const authAxios =axios.create({
     baseURL:process.env.REACT_APP_API_ENDPOINT,
     headers:{
@@ -30,7 +30,7 @@ const HomeBlogs = () => {
       try {
         (async()=>{
             setLoading(true)
-            const result=await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getallblogs?page=${next}&size=3`)
+            const result=await authAxios.get(`${process.env.REACT_APP_API_ENDPOINT}/blog/getallblogs?page=${next}&size=10`)
             if(result.data.result){
               setLastpage(true)
               setBlogs([...result.data.blog])

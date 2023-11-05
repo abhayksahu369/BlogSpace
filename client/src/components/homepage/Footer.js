@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 const Footer=()=>{
-   const auth=JSON.parse(localStorage.getItem("id"))
+   const auth=JSON.parse(sessionStorage.getItem("id"))
     return(
         <>
         {

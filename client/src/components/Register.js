@@ -6,7 +6,7 @@ import {dpcount} from "../config.js"
 
 
 const Register=()=>{
-    const auth=sessionStorage.getItem("token")
+    const auth=localStorage.getItem("token")
     const[name,setName]=useState("")
     const[username,setUsername]=useState("")
     const[email,setEmail]=useState("")
@@ -34,8 +34,8 @@ const Register=()=>{
             const lowercaseUsername=username.toLowerCase();
             const result=await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/signup`,{name,username:lowercaseUsername,email,password,about,place,dpnumber})
             setLoading(false)
-            sessionStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
-            sessionStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
+            localStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
+            localStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
             console.log("user registered")
             console.log(result.data.user)
             navigate("/")

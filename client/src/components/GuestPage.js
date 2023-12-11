@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 const GuestPage = () => {
-    const auth = sessionStorage.getItem("token")
+    const auth = localStorage.getItem("token")
     const navigate = useNavigate()
     useEffect(() => {
         if (auth) {

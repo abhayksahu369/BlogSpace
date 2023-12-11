@@ -4,7 +4,7 @@ import Footer from "./homepage/Footer";
 import ClipLoader from "react-spinners/ClipLoader"
 
 
-//testing
+
 
 const About=()=>{
     

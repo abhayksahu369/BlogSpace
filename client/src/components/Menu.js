@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Menu = () => {
     const navigate = useNavigate();
-    const auth=sessionStorage.getItem("id")
+    const auth=localStorage.getItem("id")
     const handleLogout = () => {
             const logout=window.confirm("Are you sure you want to log out?")
             if(logout){
                 navigate("/guestpage")
-                sessionStorage.removeItem("id");
-                sessionStorage.removeItem("token");
+                localStorage.removeItem("id");
+                localStorage.removeItem("token");
                 sessionStorage.removeItem("next")
             }
            

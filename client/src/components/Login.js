@@ -5,7 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader"
 
 
 const Login = () => {
-  const auth=sessionStorage.getItem("token")
+  const auth=localStorage.getItem("token")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const[loading,setLoading]=useState(false)
@@ -23,8 +23,8 @@ const Login = () => {
       const result = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/login`, { email: email, password: password }, { withCredentials: true })
       setLoading(false)
       if (result.data.user.name) {
-        sessionStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
-        sessionStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
+        localStorage.setItem("id", JSON.stringify({ id: result.data.user._id,name:result.data.user.name }))
+        localStorage.setItem("token", JSON.stringify({ token:result.data.auth}))
         navigate("/")
       }
 

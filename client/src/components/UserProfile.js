@@ -14,7 +14,7 @@ const UserProfile = () => {
     const[dpnumber,setDpnumber]=useState(0);
     const {id}=useParams();
     
-    const token=JSON.parse((sessionStorage.getItem("token"))).token
+    const token=JSON.parse((localStorage.getItem("token"))).token
     const authAxios =axios.create({
     baseURL:process.env.REACT_APP_API_ENDPOINT,
     headers:{

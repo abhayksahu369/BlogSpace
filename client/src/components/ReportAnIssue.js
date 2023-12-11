@@ -11,8 +11,8 @@ const ReportAnIssue=()=>{
     const [loading, setLoading] = useState(false)
     
    
-    const token=JSON.parse((sessionStorage.getItem("token"))).token
-    const user=JSON.parse((sessionStorage.getItem("id")))
+    const token=JSON.parse((localStorage.getItem("token"))).token
+    const user=JSON.parse((localStorage.getItem("id")))
     const authAxios =axios.create({
     baseURL:process.env.REACT_APP_API_ENDPOINT,
     headers:{

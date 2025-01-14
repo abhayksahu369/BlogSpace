@@ -6,8 +6,8 @@ import ClipLoader from "react-spinners/ClipLoader"
 
 const Login = () => {
   const auth=localStorage.getItem("token")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("guest@gmail.com")
+  const [password, setPassword] = useState("guest")
   const[loading,setLoading]=useState(false)
   const navigate = useNavigate()
 
